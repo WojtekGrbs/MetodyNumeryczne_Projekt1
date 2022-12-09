@@ -16,7 +16,7 @@ function [] = Demonstrate2(a,b,c,d,p)
 
     % Macierz A generujemy funkcją GenerateMatrix
     size = 1500;
-    I = ResultMatrix(GenerateMatrix(a,b,c,d,size,size), p, 0.1);
+    I = ResultMatrix(GenerateMatrix(a,b,c,d,size,size), p, 0.01);
     
     % Ręcznie ustawiamy kolorystykę
     map = hot(31);
