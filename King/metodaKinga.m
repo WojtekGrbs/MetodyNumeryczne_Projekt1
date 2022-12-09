@@ -1,25 +1,24 @@
 function [k,x,w_x] = metodaKinga(p, x0, tol, max_iter)
 
-% Wyznaczanie zera wielomianu metodą Halleya'a
-% p - wspolczynniki wielomianu np. p =[3,2,1], czyli w(x) = 3x^2 + 2x + 1
+% Funkcja służy do wyznaczania zera wielomianu metodą Kinga
+%Jako argumenty metoda przyjmuje:
+% p - wspolczynniki wielomianu
 % x0 - początkowe przybliżenie
 % tol - dokładność
 % max_iter - maksymalna ilość iteracji
 % Metoda zwraca:
+% k - liczba wykonanych iteracji
 % x - przybliżenie
-% i - liczba wykonanych iteracji
-% w_x=w(x), gdzie x jest obliczonym przybliżeniem zera w(x)
+% w_x=w(x)
 
 k = 0;
 dx = tol + 1;
-xpocz = x0;             % wartość początkowa
 
-      % I pochodna wielomianu
 
 while abs(dx) > tol && k <= max_iter
     w = Horner(p,x0);
     y0 = x0 - w/HornerDerivative(p, x0);
-    if abs(w) <= tol               % dokładność jest wystarczająca
+    if abs(w) <= tol               % warunek na dokładność
         x = x0;
         w_x = w;
         return
@@ -35,11 +34,11 @@ while abs(dx) > tol && k <= max_iter
     licznik2 = HornerDerivative(p, y0)*(Horner(p,y0))^3*Horner(p,x0);
     licznik = licznik1 + licznik2;
     dx = licznik/mianownik;
-    x1 = y0 - dx;        % obliczanie następnego przybliżenia 
-    k = k + 1;           % aktualizacja i
-    x0 = x1;             % aktualizacja x0
+    x1 = y0 - dx;        % obliczanie xk+1
+    k = k + 1;           % aktualizacja liczby iteracji 
+    x0 = x1;             % aktualizacja xk
 end
 
-fprintf('Nie znaleziono rozwiązania w %d iteracjach, zaczynając od %d z wymaganą precyzją wynoszącej: %d \n', max_iter, xpocz, tol);
-k = 31;         % bo zamiar jest taki, aby wszystkie pierwiastki nie znalezione do 30 iteracji były kolorowane na jeden kolor  
+fprintf('Nie znaleziono rozwiązania w %d iteracjach', max_iter);
+k = 31;         %gdy nie znajdziemy w wymaganej liczbie iteracji to kolorujemy na czarno  
 x = NaN;
