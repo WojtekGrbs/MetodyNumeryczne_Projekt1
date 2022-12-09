@@ -1,4 +1,4 @@
-function [k,x,w_x] = metodaHomeiera(p, x0, tol, max_iter)
+function [k,x,w_x] = metodaHomeiera(p, x0, tol)
 
 % Funkcja metodaHomeiera(w,x0,tol) służy określeniu miejsc zerowych podanego
 % wielomianu przy pomocy metody Homeiera, jednocześnie umożliwiająca
@@ -16,6 +16,7 @@ function [k,x,w_x] = metodaHomeiera(p, x0, tol, max_iter)
 
 k = 0;
 dx = tol + 1;
+max_iter = 30;
 
 while abs(dx) > tol && k <= max_iter
     w = Horner(p,x0);
