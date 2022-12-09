@@ -1,4 +1,4 @@
-function [k,x,w_x] = metodaHomeiera(w, x0, tol)
+function [k,x,w_x] = metodaHomeiera(p, x0, tol, max_iter)
 
 % Funkcja metodaHomeiera(w,x0,tol) służy określeniu miejsc zerowych podanego
 % wielomianu przy pomocy metody Homeiera, jednocześnie umożliwiająca
@@ -14,31 +14,30 @@ function [k,x,w_x] = metodaHomeiera(w, x0, tol)
 % x - przybliżenie
 % w_x=w(x)
 
-max_iter = 30;
 k = 0;
 dx = tol + 1;
 
 while abs(dx) > tol && k <= max_iter
-    w = Horner(w,x0);
-    y0 = x0 - w/HornerDerivative(w, x0);
+    w = Horner(p,x0);
+    y0 = x0 - w/HornerDerivative(p, x0);
     if abs(w) <= tol               % warunek na dokładność
         x = x0;
         w_x = w;
         return
     end
-    mianownik = 2*HornerDerivative(w, x0)*(HornerDerivative(w, y0));
+    mianownik = 2*HornerDerivative(p, x0)*(HornerDerivative(p, y0));
     
     if mianownik == 0
         disp(' Dzielenie przez zero! ');
         return
     end
     
-    dx = (w*(HornerDerivative(w, x0)+ HornerDerivative(w, y0)))/mianownik;
+    dx = (w*(HornerDerivative(p, x0)+ HornerDerivative(p, y0)))/mianownik;
     x1 = x0 - dx;        % obliczanie xk+1
     k = k + 1;           % aktualizacja liczby iteracji 
     x0 = x1;             % aktualizacja xk
 end
 
-fprintf('Nie znaleziono rozwiązania w %d iteracjach', max_iter);
+fprintf('Nie znaleziono rozwiązania w %d iteracjach \n', max_iter);
 k = 31;         %gdy nie znajdziemy w wymaganej liczbie iteracji to kolorujemy na czarno  
 x = NaN;
