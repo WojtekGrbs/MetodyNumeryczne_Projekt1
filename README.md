@@ -1,0 +1,2 @@
+# NumerkiCyferki
+Projekcik taki o
