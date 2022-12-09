@@ -1,8 +1,8 @@
-function [x, count] = Jarratt(w, x_0, tol)
+function count = Jarratt(w, x_0, tol)
     % Funkcja Jarrat(w,x_0,tol) służy określeniu miejsc zerowych podanego
     % wielomianu przy pomocy metody Jarratt'a, jednocześnie umożliwiająca
-    % maksymalnie 30 iteracji tej metody, w przeciwnym wypadku miejsce
-    % określane jest jako NaN, a liczba iteracji na 31.
+    % maksymalnie 30 iteracji tej metody, w przeciwnym wypadku liczba 
+    % iteracji ustalana jest na 31.
 
     % w: Współczynniki wielomianu, którego miejsc zerowych szukamy
     % x_0: Początkowe przybliżenie
@@ -23,7 +23,6 @@ function [x, count] = Jarratt(w, x_0, tol)
             x0 = x1;
             fx0 = Horner(w, x0);
             if abs(fx0) < tol
-                x = x1;
             return
             end 
         end
@@ -43,5 +42,4 @@ function [x, count] = Jarratt(w, x_0, tol)
 
     % W przypadku, gdy po przejściu 30 iteracji nie spełniamy warunku stopu
     count = 31;
-    x = NaN;
 end
