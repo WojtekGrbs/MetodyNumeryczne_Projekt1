@@ -1,6 +1,9 @@
-function [k,x,w_x] = metodaKinga(p, x0, tol, max_iter)
+function [k,x,w_x] = metodaKinga(p, x0, tol)
 
-% Funkcja służy do wyznaczania zera wielomianu metodą Kinga
+% Funkcja metodaHomeiera(w,x0,tol) służy określeniu miejsc zerowych podanego
+% wielomianu przy pomocy metody Kinga, jednocześnie umożliwiająca
+% maksymalnie 30 iteracji tej metody, w przeciwnym wypadku liczba 
+% iteracji ustalana jest na 31.
 %Jako argumenty metoda przyjmuje:
 % p - wspolczynniki wielomianu
 % x0 - początkowe przybliżenie
@@ -11,6 +14,7 @@ function [k,x,w_x] = metodaKinga(p, x0, tol, max_iter)
 % x - przybliżenie
 % w_x=w(x)
 
+max_iter = 30;
 k = 0;
 dx = tol + 1;
 
@@ -39,6 +43,6 @@ while abs(dx) > tol && k <= max_iter
     x0 = x1;             % aktualizacja xk
 end
 
-fprintf('Nie znaleziono rozwiązania w %d iteracjach', max_iter);
+fprintf('Nie znaleziono rozwiązania w %d iteracjach \n', max_iter);
 k = 31;         %gdy nie znajdziemy w wymaganej liczbie iteracji to kolorujemy na czarno  
 x = NaN;
