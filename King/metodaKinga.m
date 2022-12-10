@@ -16,8 +16,6 @@ function [k,x,w_x] = metodaKinga(p, x0, tol)
 
 max_iter = 30;
 k = 0;
-dx = tol + 1;
-
 
 while k <= max_iter
     w = Horner(p,x0);
