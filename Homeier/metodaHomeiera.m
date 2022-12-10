@@ -15,10 +15,9 @@ function [k,x,w_x] = metodaHomeiera(p, x0, tol)
 % w_x=w(x)
 
 k = 0;
-dx = tol + 1;
 max_iter = 30;
 
-while abs(dx) > tol && k <= max_iter
+while k <= max_iter
     w = Horner(p,x0);
     y0 = x0 - w/HornerDerivative(p, x0);
     if abs(w) <= tol               % warunek na dokładność
