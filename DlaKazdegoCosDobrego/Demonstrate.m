@@ -15,7 +15,8 @@ function [] = Demonstrate(a,b,c,d,p)
     % p: Wektor współczynników wielomianu, którego miejsc zerowych szukamy
 
     % Macierz A generujemy funkcją GenerateMatrix
-    I = ResultMatrix(GenerateMatrix(a,b,c,d,1500,1500), p, 0.01);
+    size = 1500;
+    I = ResultMatrix(GenerateMatrix(a,b,c,d,size,size), p, 0.01);
     
     % Ręcznie ustawiamy kolorystykę
     map = hot(31);
@@ -28,4 +29,10 @@ function [] = Demonstrate(a,b,c,d,p)
     % najciemniejsze
     colormap(flipud(map))
     colorbar
+    xticks([1 size/4 size/2 size*3/4  size-1])
+    xticklabels({a, -abs(b-a)/4,a+b,abs(b-a)/4,b})
+    yticks([1 size/4 size/2 size*3/4  size-1])
+    yticklabels({d, abs(d-c)/4,c+d, -abs(d-c)/4,c})
+    xlabel('Re(z)')
+    ylabel('Im(z)')
 end
