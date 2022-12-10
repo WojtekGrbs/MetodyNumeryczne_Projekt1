@@ -19,7 +19,7 @@ k = 0;
 dx = tol + 1;
 
 
-while abs(dx) > tol && k <= max_iter
+while k <= max_iter
     w = Horner(p,x0);
     y0 = x0 - w/HornerDerivative(p, x0);
     if abs(w) <= tol               % warunek na dokładność
