@@ -38,6 +38,5 @@ while k <= max_iter
     x0 = x1;             % aktualizacja xk
 end
 
-fprintf('Nie znaleziono rozwiązania w %d iteracjach \n', max_iter);
-k = 31;         %gdy nie znajdziemy w wymaganej liczbie iteracji to kolorujemy na czarno  
+k = 31;         
 x = NaN;
