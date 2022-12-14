@@ -7,7 +7,10 @@ function count = Jarratt(w, x_0, tol)
     % w: Współczynniki wielomianu, którego miejsc zerowych szukamy
     % x_0: Początkowe przybliżenie
     % tol: (Zwykle mała) liczba rzeczywista określająca warunek stopu
-
+    
+    % Funkcja wymaga wcześniejszego zaimplementowania funkcji Horner() oraz
+    % HornerDerivative()
+    
     x0 = x_0;
     x1 = x_0;
 
@@ -16,7 +19,7 @@ function count = Jarratt(w, x_0, tol)
     % Zmienna count zlicza dotychczasowe iteracje
     count = 0;
 
-    while (count <= 30)
+    while (count < 30)
         
         % W pierwszym kroku nie nadpisujemy
         if count ~= 0 
@@ -31,7 +34,7 @@ function count = Jarratt(w, x_0, tol)
         fix0 = HornerDerivative(w, x0);
 
         if fix0 == 0
-            disp('oj')
+            disp('Dzielenie przez 0!')
             return
         end
         
