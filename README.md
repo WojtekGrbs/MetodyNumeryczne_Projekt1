@@ -1,5 +1,5 @@
 # Metody Numeryczne - Projekt 1
-Autorzy: [Zuzanna](https://github.com/zuzanna56), [Krzysztof](https://github.com/SawickiK) oraz ja
+Autorzy: [Zuzanna](https://github.com/zuzanna56), [Krzysztof](https://github.com/SawickiK), [Wojciech](https://github.com/WojtekGrbs)
 <br></br>
 # Motywacje
 Celem projektu było wyznaczenie zer dowolnego wielomianu postaci $$\sum_{k=0}^{n} a_kz^k$$ oraz wizualizacja szybkości zbieżności metod: Jarratt', King'a oraz Homeier'a w dziedzinie zespolonej. W implementacji powyższego użyty został program MATLAB
