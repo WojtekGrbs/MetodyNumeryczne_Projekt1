@@ -4,7 +4,7 @@ function [k,x,w_x] = metodaKinga(p, x0, tol)
 % wielomianu przy pomocy metody Kinga, jednocześnie umożliwiająca
 % maksymalnie 30 iteracji tej metody, w przeciwnym wypadku liczba 
 % iteracji ustalana jest na 31.
-%Jako argumenty metoda przyjmuje:
+% Jako argumenty metoda przyjmuje:
 % p - wspolczynniki wielomianu
 % x0 - początkowe przybliżenie
 % tol - dokładność
